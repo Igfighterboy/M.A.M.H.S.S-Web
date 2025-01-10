@@ -60,6 +60,45 @@
     });
 
 
+   //gallary  ith cncted alla on cheynm ath @anandhu
+   
+        const marquee = document.querySelector('.marquee');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let scrollAmount = 0;
+        const scrollStep = 250;
+
+
+        nextBtn.addEventListener('click', () => {
+        scrollAmount += scrollStep;
+        marquee.style.transform = `translateX(-${scrollAmount}px)`;
+        });
+
+
+        prevBtn.addEventListener('click', () => {
+        if (scrollAmount > 0) {
+            scrollAmount -= scrollStep;
+            marquee.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+        });
+
+
+        function openModal(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modal.style.display = "block";
+        modalImage.src = imageSrc;
+        }
+
+
+        function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = "none";
+        }
+//gallary end
+
+
     // Modal Video
     $(document).ready(function () {
         var $videoSrc;
@@ -75,6 +114,16 @@
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
         })
+    });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.querySelector(".program-carousel");
+        const boxes = [...document.querySelectorAll(".program-box")];
+        boxes.forEach((box) => {
+            const clone = box.cloneNode(true);
+            carousel.appendChild(clone);
+        });
     });
 
 
